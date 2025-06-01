@@ -1,23 +1,15 @@
-function Form() {
+function FilterButton(props) {
   return (
-    <form>
-      <h2 className="label-wrapper">
-        <label htmlFor="new-todo-input" className="label__lg">
-          What needs to be done?
-        </label>
-      </h2>
-      <input
-        type="text"
-        id="new-todo-input"
-        className="input input__lg"
-        name="text"
-        autoComplete="off"
-      />
-      <button type="submit" className="btn btn__primary btn__lg">
-        Add
-      </button>
-    </form>
+    <button 
+        type="button" 
+        className="btn toggle-btn" 
+        aria-pressed="true"
+        onClick={() => props.setFilter(props.name)}>
+      <span className="visually-hidden">Show </span>
+      <span>{props.name} </span>
+      <span className="visually-hidden"> tasks</span>
+    </button>
   );
 }
 
-export default Form;
+export default FilterButton;
