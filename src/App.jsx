@@ -1,24 +1,36 @@
-import "./App.css";
+import Todo from "./components/Todo";
+import FilterButton from "./components/FilterButton";
+import Form from "./components/Form";
 
-const subject = "React";
 
 function App(props) {
-
+  const taskList = props.tasks?.map((task) => 
+    <Todo 
+      id={task.id} 
+      name={task.name} 
+      completed={task.completed}
+      key={task.id}
+    />
+  );
+  
   return (
-    <>
-      <header>
-        {/* Hello, React :)! */}
-        <h1>Hello, {subject + ' :)'}!</h1>
-        {/* Hello, REACT */}
-        <h1>Hello, {subject.toUpperCase()}</h1>
-        {/* Hello, 4! */}
-        <h1>Hello, {props.subject}!</h1>
-        <button type="button" className="primary">
-          Click me!
-        </button>
-{/* test */}
-      </header>
-    </>
+    <div className="todoapp stack-large">
+      <h1>TodoMatic</h1>
+      <Form />
+
+      <div className="filters btn-group stack-exception">
+        <FilterButton />
+        <FilterButton />
+        <FilterButton />
+      </div>
+      <h2 id="list-heading">3 tasks remaining</h2>
+      <ul
+        role="list"
+        className="todo-list stack-large stack-exception"
+        aria-labelledby="list-heading">
+        {taskList}
+      </ul>
+    </div>
   );
 }
 
